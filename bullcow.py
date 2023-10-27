@@ -42,18 +42,25 @@ def tries():
             print("max is = 40")
             continue
         return int(read)
-
+win = False
 while True:
     cmp = generatenum()
     count = tries()
+    print(cmp)
     while count > 0:
         number = user()
         bull, cow = check(number,cmp)
-        print(f"{number}\nbull -> {bull}\ncow -> {cow}")
+        if bull == 4:
+            print("right guess!")
+            win = True
+            count = 0
+            continue
+        else:
+            print(f"{number}\nbull -> {bull}\ncow -> {cow}")
         count -= 1
     else:
-        print(f"number of tries are done\nthe right answer is :{cmp}")
-
+        if not win:
+            print(f"number of tries are done\nthe right answer is :{cmp}")
         if again():
             continue
         else:
